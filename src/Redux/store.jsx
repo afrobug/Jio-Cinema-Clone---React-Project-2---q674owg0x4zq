@@ -1,8 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import busReducer from "./BusSlice"
+import { configureStore } from "@reduxjs/toolkit";
+import loginReducer from "./loginSlice";
+import showReducer from "./movieSlice";
 
 export const store = configureStore({
   reducer: {
-    bus: busReducer,
+    login: loginReducer,
+    show: showReducer,
   },
-})
+});
