@@ -1,11 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "../App";
-import "../App.css";
+import "./Style/navbar.css";
 
-const Navbar = () => {
-  const { setVideoUrl, slider, setSlider, activeLink, setActiveLink } =
-    useContext(MyContext);
+
+function Navbar() {
+  // Initialize with the default active link
+  const [sortFilm, setSortFilm] = useState(true);
+  const {
+    setVideoUrl,
+    slider,
+    setSlider,
+    activeLink,
+    setActiveLink,
+    login,
+    setLogin,
+  } = useContext(MyContext);
   const [lessThanPixel, setLessThanPixel] = useState(false);
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
@@ -40,6 +51,7 @@ const Navbar = () => {
         {myLocalData.map((data) => (
           <h4
             className={` ${activeLink === data[1] ? "active" : ""}`}
+            // className="active"
             onClick={() => {
               handleLinkClick(data[1]);
             }}
@@ -78,7 +90,10 @@ const Navbar = () => {
           >
             <h4
               onClick={() => {
-                setMYLocalData([...myLocalData, ["SortFilm", "SortFilm"]]);
+                if (sortFilm) {
+                  setMYLocalData([...myLocalData, ["SortFilm", "SortFilm"]]);
+                  setSortFilm(false);
+                }
               }}
               className="newAddGroupDivh4"
               style={{
@@ -90,6 +105,67 @@ const Navbar = () => {
             </h4>
           </div>
         )}
+
+        {/* <h4
+          className={`${activeLink === "subscription" ? "active" : ""}`}
+          onClick={() => handleLinkClick("subscription")}
+        >
+          <Link
+            to="/subscription"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              padding: "10px 10px",
+            }}
+          >
+            Subscription
+          </Link>
+        </h4> */}
+        {/* <h4
+          className={` ${activeLink === "Watchlist" ? "active" : ""}`}
+          onClick={() => handleLinkClick("Watchlist")}
+        >
+          <Link
+            to="/Watchlist"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              padding: "10px 10px",
+            }}
+          >
+            Watchlist
+          </Link>
+        </h4> */}
+        {/* <h4
+          className={` ${activeLink === "TVShow" ? "active" : ""}`}
+          onClick={() => handleLinkClick("TVmovies")}
+        >
+          <Link
+            to="/tv-shows"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              padding: "10px 10px",
+            }}
+          >
+            TV Shows
+          </Link>
+        </h4> */}
+        {/* <h4
+          className={` ${activeLink === "web" ? "active" : ""}`}
+          onClick={() => handleLinkClick("web")}
+        >
+          <Link
+            to="/web-series"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              padding: "10px 10px",
+            }}
+          >
+            Web Series
+          </Link>
+        </h4> */}
       </div>
       {lessThanPixel && (
         <div className="lessWidth">
@@ -132,36 +208,54 @@ const Navbar = () => {
             <img src="https://www.jiocinema.com/images/profile/profile_avatar.svg" />
             <h3 className="sliderH5">Hi! {myName}</h3>
           </div>
-          <h1
-            onClick={() => {
-              window.location.href = "/SignUp";
-              setSlider(false);
-            }}
-          >
-            SignUp
-          </h1>
-          <h1
-            onClick={() => {
-              window.location.href = "/PasswordUpdateForm";
-              setSlider(false);
-            }}
-          >
-            Change Password
-          </h1>
-          <h1
-            onClick={() => {
-              localStorage.setItem("jwtToken", "");
-              localStorage.setItem("myName", "hey");
-              setActiveLink("sd");
-              window.location.href = "/";
-            }}
-          >
-            SignOut
-          </h1>
+          {!login && (
+            <h1
+              onClick={() => {
+                localStorage.setItem("jwtToken", "");
+                localStorage.setItem("myName", "");
+                setActiveLink("sd");
+                window.location.href = "/";
+              }}
+            >
+              Login
+            </h1>
+          )}
+          {!login && (
+            <h1
+              onClick={() => {
+                window.location.href = "/SignUp";
+                setSlider(false);
+              }}
+            >
+              SignUp
+            </h1>
+          )}
+          {login && (
+            <h1
+              onClick={() => {
+                window.location.href = "/PasswordUpdateForm";
+                setSlider(false);
+              }}
+            >
+              Change Password
+            </h1>
+          )}
+          {login && (
+            <h1
+              onClick={() => {
+                localStorage.setItem("jwtToken", "");
+                localStorage.setItem("myName", "");
+                setActiveLink("sd");
+                window.location.href = "/";
+              }}
+            >
+              SignOut
+            </h1>
+          )}
         </div>
       )}
     </div>
   );
-};
+}
 
 export default Navbar;

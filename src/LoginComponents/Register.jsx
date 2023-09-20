@@ -14,7 +14,7 @@ const Register = (props) => {
     <div className="auth-form-container">
       <h2>Register</h2>
       <form className="register-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Full name</label>
+        <label htmlFor="name">Username</label>
         <input
           value={name}
           name="name"
@@ -22,7 +22,7 @@ const Register = (props) => {
           id="name"
           placeholder="full Name"
         />
-        <label htmlFor="email">email</label>
+        <label htmlFor="email">Email</label>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -31,7 +31,7 @@ const Register = (props) => {
           id="email"
           name="email"
         />
-        <label htmlFor="password">password</label>
+        <label htmlFor="password">Password</label>
         <div className="login-form">
           <input
             value={pass}

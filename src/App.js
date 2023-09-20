@@ -26,7 +26,7 @@ function App() {
     setActiveLink,
   };
   return (
-    <div className="App">
+    <div className="">
       <MyContext.Provider value={contextValue}>
       <Router>
         <Routes>

@@ -3,8 +3,18 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useDispatch, useSelector } from "react-redux";
 import { getLogin } from "../Redux/loginSlice";
 import { useNavigate } from "react-router-dom";
+// import { auth, provider } from "../firebase";
 
 const Login = (props) => {
+
+  // const handleAuth = () => {
+  //   auth.signInWithPopup(provider).then((result) =>{
+  //     console.log(result)
+  //   }).catch((error) =>{
+  //     alert(error.message);
+  //   })
+  // }
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLogin, loginError } = useSelector((state) => state.login);
@@ -65,6 +75,9 @@ const Login = (props) => {
       >
         Don't have an account? Register here.
       </button>
+
+      <button >Login with Google</button>
+      <br />
       <div style={{ fontSize: 13 }}>
         By continuing you agree to our{" "}
         <a href="https://help.jiocinema.com/articles/terms-and-conditions/terms-and-conditions/641d382892cd636d4c10983d?uid=6c4f9573-cfd7-4d5c-ac97-546d21ebe9a9&name=Gnwu4Zof">
