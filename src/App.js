@@ -4,10 +4,11 @@ import Home from "./components/Home";
 import Handle from "./LoginComponents/Handle";
 import Navbar from "./components/Navbar";
 import { createContext, useState } from "react";
+import Detail from "./components/Detail";
+import Video from "./components/Video";
+import Watchlist from "./components/Watchlist";
 
 export const MyContext = createContext("");
-
-
 
 function App() {
   const [videoUrl, setVideoUrl] = useState("");
@@ -28,13 +29,16 @@ function App() {
   return (
     <div className="">
       <MyContext.Provider value={contextValue}>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Handle />}></Route>
-          <Route exact path="/home" element={<Home />}></Route>
-          <Route exact path="/navbar" element={<Navbar/>}></Route>
-        </Routes>
-      </Router>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<Handle />}></Route>
+            <Route exact path="/home" element={<Home />}></Route>
+            <Route exact path="/navbar" element={<Navbar />}></Route>
+            <Route exact path="/detail" element={<Detail />}></Route>
+            <Route exact path="/video" element={<Video />}></Route>
+            <Route exact path="/watchlist" element={<Watchlist />}></Route>
+          </Routes>
+        </Router>
       </MyContext.Provider>
     </div>
   );

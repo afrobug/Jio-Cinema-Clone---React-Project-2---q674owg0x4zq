@@ -3,6 +3,7 @@ import "./Style/movieStyle.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
 
 function MovieData({  show, first, last }) {
   const containerRef = useRef(null);
@@ -49,16 +50,14 @@ function MovieData({  show, first, last }) {
         className="image-container-2"
         onScroll={handleScroll}
       >
-        {show &&
-          show.slice(first, last).map((images) => {
-            return (
-              <div key={images.id}>
-                <MovieCard
-                  thumbnail={images.thumbnail}
-                />
-              </div>
-            );
-          })}
+        {show.slice(first,last).map((shows)=>{
+          return (
+        <div>
+          <Link to="/">
+            <img src={shows.thumbnail} alt="" />
+          </Link>
+        </div>
+        )})}
       </div>
 
       <ArrowForwardIosIcon

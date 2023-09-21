@@ -1,47 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Trending = () => {
+const Trending = ({ show, title, first, last }) => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = (id) => {
+    setOpenModal(true);
+  };
+
+  function closeModal() {
+    setOpenModal(false);
+  }
+
+  const token = localStorage.getItem("Token");
+
   return (
     <Container>
-      <h4>Latest & Trending</h4>
+      <h4>{title}</h4>
       <Content>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/jawaan.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
+        {show.slice(first, last).map((shows) => {
+          return (
+            <Wrap>
+              <Link to="/">
+                <img
+                  src={shows.thumbnail}
+                  alt="thumbnail"
+                  onClick={() => handleOpenModal()}
+                />
+              </Link>
+            </Wrap>
+          );
+        })}
       </Content>
     </Container>
   );

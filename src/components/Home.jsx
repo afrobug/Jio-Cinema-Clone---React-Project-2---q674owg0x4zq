@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getShow } from "../Redux/movieSlice";
-import MovieData from "./MovieData";
 import Navbar from "./Navbar";
 import styled from "styled-components";
 import ImageSlider from "./ImageSlider";
-import Binge from "./Binge";
 import Trending from "./Trending";
-import Sports from "./Sports";
-import Hollywood from "./Hollywood";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,18 +13,34 @@ const Home = () => {
   useEffect(() => {
     dispatch(getShow());
   }, [dispatch]);
+  console.log("show", show);
 
   return (
     <div>
       <Navbar />
-      {/* <MovieData show={show} first={0} last={10}/> */}
-
       <Container>
         <ImageSlider />
-        <Trending />
-        <Binge />
-        <Sports />
-        <Hollywood />
+        <Trending
+          show={show}
+          title="Latest & Trending
+"
+          first={0}
+          last={7}
+        />
+        <Trending
+          show={show}
+          title="Binge-Worthy Originals
+"
+          first={8}
+          last={15}
+        />
+        <Trending
+          show={show}
+          title="Top Hollywood Movies
+"
+          first={16}
+          last={30}
+        />
       </Container>
     </div>
   );

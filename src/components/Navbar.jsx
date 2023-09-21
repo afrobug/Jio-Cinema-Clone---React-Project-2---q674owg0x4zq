@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { MyContext } from "../App";
 import "./Style/navbar.css";
 
-
 function Navbar() {
   // Initialize with the default active link
   const [sortFilm, setSortFilm] = useState(true);
@@ -101,7 +100,7 @@ function Navbar() {
                 fontSize: "20px",
               }}
             >
-              SortFilm
+              ShortFilm
             </h4>
           </div>
         )}
@@ -183,6 +182,7 @@ function Navbar() {
                   textDecoration: "none",
                   color: "white",
                   padding: "10px 10px",
+                  width: "50%",
                 }}
               >
                 {data[1]}
@@ -252,6 +252,14 @@ function Navbar() {
               SignOut
             </h1>
           )}
+
+          <div
+            onClick={() => {
+              window.location.href = "/";
+            }}
+          >
+            logout
+          </div>
         </div>
       )}
     </div>
