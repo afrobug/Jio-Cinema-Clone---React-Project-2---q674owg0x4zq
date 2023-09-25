@@ -46,7 +46,12 @@ function Navbar() {
           className="menu"
           src="https://th.bing.com/th/id/R.7917c643053737a32ee070e8eca7fb3d?rik=OJPogICGQrUuGQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_51584.png&ehk=4OfpX4nPa1hboxLz4swH0KV0EzWl9%2fF1NygH7LzN6tE%3d&risl=&pid=ImgRaw&r=0"
         ></img>
-        <img src="https://www.jiocinema.com/images/jc_logo_v2.svg" alt="logo" />
+        <a href="/home" style={{marginTop:"10px"}}>
+          <img
+            src="https://www.jiocinema.com/images/jc_logo_v2.svg"
+            alt="logo"
+          />
+        </a>
         {myLocalData.map((data) => (
           <h4
             className={` ${activeLink === data[1] ? "active" : ""}`}

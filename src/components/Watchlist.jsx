@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { getWatchlist } from "../Redux/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Navbar from "./Navbar";
 
 const Watchlist = () => {
   const { show } = useSelector((state) => state.show);
@@ -14,12 +15,14 @@ const Watchlist = () => {
 
   return (
     <>
+      <Navbar />
       <h1
         style={{
           color: "white",
           textAlign: "center",
           fontSize: 50,
           margin: 20,
+          marginTop: 70,
         }}
       >
         Watchlist

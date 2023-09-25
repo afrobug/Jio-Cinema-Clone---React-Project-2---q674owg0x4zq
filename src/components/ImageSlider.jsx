@@ -23,7 +23,7 @@ const ImageSlider = () => {
       </Wrap>
       <Wrap>
         <a>
-          <img src="/images/slider-2.jpg" alt="" />
+          <img src="/images/slider-2.jpg" alt="" style={{clipPath: 'polygon(0 0, 90% 0, 90% 100%, 0% 100%)'}} />
         </a>
       </Wrap>
       <Wrap>
@@ -99,6 +99,7 @@ const Wrap = styled.div`
     img {
       width: 100%;
       height: 100%;
+      overflow: hidden;
     }
 
     &:hover {

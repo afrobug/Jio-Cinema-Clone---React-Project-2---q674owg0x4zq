@@ -1,15 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getRegister } from "../Redux/loginSlice";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Register = (props) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isRegister, registerError } = useSelector((state) => state.login);
+
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
 
+  useEffect(() => {
+    if (isRegister) {
+      alert("Successfully Registered");
+      navigate("/");
+    }
+  }, [isRegister, navigate]);
+
+  useEffect(() => {
+    if (registerError) {
+      alert(registerError);
+    }
+  }, [registerError]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
+    dispatch(getRegister({ email: email, password: pass, name: name }));
   };
+
   return (
     <div className="auth-form-container">
       <h2>Register</h2>
@@ -20,7 +43,7 @@ const Register = (props) => {
           name="name"
           onChange={(e) => setName(e.target.value)}
           id="name"
-          placeholder="full Name"
+          placeholder="Username"
         />
         <label htmlFor="email">Email</label>
         <input
@@ -40,7 +63,7 @@ const Register = (props) => {
             placeholder="********"
             id="password"
             name="password"
-            autocomplete="on"
+            autoComplete="on"
           />
           <VisibilityOffIcon className="eye-icon" />
         </div>

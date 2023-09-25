@@ -24,7 +24,7 @@ export const getLogin = createAsyncThunk("login/getLogin", async (payload) => {
 }); 
  
 export const getRegister = createAsyncThunk( 
-  "login/getRegister", 
+  "register/getRegister", 
   async (payload) => { 
     const res = await axios 
       .post( 

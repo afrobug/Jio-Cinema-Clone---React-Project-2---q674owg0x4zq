@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import styled from "styled-components";
 import ImageSlider from "./ImageSlider";
 import Trending from "./Trending";
+import Footer from "./Footer";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -39,9 +40,10 @@ const Home = () => {
           title="Top Hollywood Movies
 "
           first={16}
-          last={30}
+          last={23}
         />
       </Container>
+      <Footer />
     </div>
   );
 };

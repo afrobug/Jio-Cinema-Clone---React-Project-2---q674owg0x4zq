@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 // import { auth, provider } from "../firebase";
 
 const Login = (props) => {
-
   // const handleAuth = () => {
   //   auth.signInWithPopup(provider).then((result) =>{
   //     console.log(result)
@@ -21,21 +20,21 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  useEffect(()=>{
-    if(isLogin){
+  useEffect(() => {
+    if (isLogin) {
       navigate("/home");
     }
-  },[isLogin,navigate])
+  }, [isLogin, navigate]);
 
-  useEffect(()=>{
-    if(loginError){
+  useEffect(() => {
+    if (loginError) {
       alert(loginError);
     }
-  },[loginError])
+  }, [loginError]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getLogin({email:email,password:pass}));
+    dispatch(getLogin({ email: email, password: pass }));
   };
 
   const handleEmail = (e) => {
@@ -63,7 +62,7 @@ const Login = (props) => {
             placeholder="********"
             id="password"
             name="password"
-            autocomplete="on"
+            autoComplete="on"
           />
           <VisibilityOffIcon className="eye-icon" />
         </div>
@@ -76,7 +75,7 @@ const Login = (props) => {
         Don't have an account? Register here.
       </button>
 
-      <button >Login with Google</button>
+      {/* <button >Login with Google</button> */}
       <br />
       <div style={{ fontSize: 13 }}>
         By continuing you agree to our{" "}

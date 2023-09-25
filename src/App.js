@@ -7,6 +7,8 @@ import { createContext, useState } from "react";
 import Detail from "./components/Detail";
 import Video from "./components/Video";
 import Watchlist from "./components/Watchlist";
+import Footer from "./components/Footer";
+import Subscription from "./components/Subscription";
 
 export const MyContext = createContext("");
 
@@ -37,6 +39,9 @@ function App() {
             <Route exact path="/detail" element={<Detail />}></Route>
             <Route exact path="/video" element={<Video />}></Route>
             <Route exact path="/watchlist" element={<Watchlist />}></Route>
+            <Route exact path="/footer" element={<Footer />}></Route>
+            <Route exact path="/Subscription" element={<Subscription />}></Route>
+            <Route exact path="/detail" element={<Detail />}></Route>
           </Routes>
         </Router>
       </MyContext.Provider>
