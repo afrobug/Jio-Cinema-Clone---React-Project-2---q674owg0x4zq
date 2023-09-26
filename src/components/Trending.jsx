@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Trending = ({ show, title, first, last }) => {
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
 
-  const handleOpenModal = (id) => {
-    setOpenModal(true);
-  };
+  // const handleOpenModal = (id) => {
+  //   setOpenModal(true);
+  // };
 
-  function closeModal() {
-    setOpenModal(false);
-  }
+  // function closeModal() {
+  //   setOpenModal(false);
+  // }
 
   const token = localStorage.getItem("Token");
 
@@ -22,11 +22,13 @@ const Trending = ({ show, title, first, last }) => {
         {show.slice(first, last).map((shows) => {
           return (
             <Wrap>
-              <Link to="/">
+              <Link to="/detail">
                 <img
                   src={shows.thumbnail}
                   alt="thumbnail"
-                  onClick={() => handleOpenModal()}
+                  onClick={() => {
+                    localStorage.setItem("newFile", JSON.stringify(shows));
+                  }}
                 />
               </Link>
             </Wrap>

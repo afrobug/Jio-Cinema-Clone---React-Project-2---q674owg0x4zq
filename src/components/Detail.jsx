@@ -6,28 +6,27 @@ import "./Style/detail.css";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Sports from "./Sports";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 const Detail = () => {
   const newFile = JSON.parse(localStorage.getItem("newFile"));
+
   let { id } = useParams();
-  const { setNewFile, setActiveLink, setVideoUrl, globalData } =
-    useContext(MyContext);
-  console.log("this is newFile in ShowDEtails", newFile);
+
+  const { setNewFile, setActiveLink, setVideoUrl } = useContext(MyContext);
+
+  console.log("this is newFile in ShowDetails", newFile);
+
   setVideoUrl(newFile.video_url);
+
   const [slidedetailapi, setslidedetailapi] = useState({});
 
   setActiveLink("hello");
-  // Function to copy URL to clipboard and show a toast
-
-  const gdf = globalData.filter((data) =>
-    newFile.keywords.includes(data.keywords[0])
-  );
 
   const apiUrl = `https://academics.newtonschool.co/api/v1/ott/show/${id}`;
   const headers = {
-    projectId: "9i8o5q4pa4sj",
+    projectId: "q674owg0x4zq",
   };
 
   useEffect(() => {
@@ -42,6 +41,8 @@ const Detail = () => {
   }, []);
 
   return (
+    <div>
+        <Navbar />
     <div className="DeatilsPage">
       <section className="detailssection">
         <div className="detailsdescription">
@@ -72,7 +73,7 @@ const Detail = () => {
             </p>
             <div className="detailsbtn">
               {" "}
-              <Link to={`/play/${newFile._id}`}>
+              <Link to={`/Video/${newFile._id}`}>
                 <button
                   className="detailsbtnButton"
                   onClick={() => setVideoUrl(newFile.video_url)}
@@ -93,13 +94,9 @@ const Detail = () => {
           }}
         ></div>
       </section>
-      {/* Displaying suggested shows */}
-      {/* <section className="detailsuggestion">
-        <ToastContainer />
-      </section> */}
       <h3 style={{ color: "white", marginLeft: "15px" }}>More Like This</h3>
-      <Sports data={gdf} />
       <Footer />
+    </div>
     </div>
   );
 };

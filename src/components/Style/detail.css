@@ -3,6 +3,10 @@
   overflow: hidden;
 }
 
+.DeatilsPage span{
+  margin: 4px;
+}
+
 .detailsuggestion {
   margin: 0 !important;
   overflow: hidden;

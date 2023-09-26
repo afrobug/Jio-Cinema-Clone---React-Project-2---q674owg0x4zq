@@ -12,7 +12,7 @@ const Watchlist = () => {
   useEffect(() => {
     dispatch(getWatchlist());
   }, [dispatch]);
-
+  
   return (
     <>
       <Navbar />

@@ -20,7 +20,7 @@ const Home = () => {
     <div>
       <Navbar />
       <Container>
-        <ImageSlider />
+        {show.length > 0 && <ImageSlider show={show} first={0} last={7} />}
         <Trending
           show={show}
           title="Latest & Trending
@@ -41,6 +41,29 @@ const Home = () => {
 "
           first={16}
           last={23}
+        />
+        <Trending
+          show={show}
+          title="Fresh Episodes
+"
+          first={24}
+          last={31}
+        />
+        <Trending
+          show={show}
+          title="Action Blockbusters
+
+"
+          first={32}
+          last={39}
+        />
+        <Trending
+          show={show}
+          title="Coming Soon
+
+"
+          first={40}
+          last={54}
         />
       </Container>
       <Footer />

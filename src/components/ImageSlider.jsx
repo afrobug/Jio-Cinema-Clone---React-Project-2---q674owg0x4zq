@@ -3,8 +3,9 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
-const ImageSlider = () => {
+const ImageSlider = ({ show }) => {
   let settings = {
     dots: true,
     infinite: true,
@@ -14,31 +15,29 @@ const ImageSlider = () => {
     autoplay: true,
   };
 
+  console.log("show", show[0]);
+
   return (
     <Carousel {...settings}>
-      <Wrap>
-        <a>
-          <img src="/images/slider-1.jpg" alt="" />
-        </a>
-      </Wrap>
-      <Wrap>
-        <a>
-          <img src="/images/slider-2.jpg" alt="" style={{clipPath: 'polygon(0 0, 90% 0, 90% 100%, 0% 100%)'}} />
-        </a>
-      </Wrap>
-      <Wrap>
-        <a>
-          <img src="/images/slider-3.jpg" alt="" />
-        {/* <video autoplay={true} loop={true} playsInline={true}>
-            <source src='/videos/WandaVision.mp4' type="video/mp4"></source>
-        </video> */}
-        </a>
-      </Wrap>
-      <Wrap>
-        <a>
-          <img src="/images/slider-4.jpg" alt="" />
-        </a>
-      </Wrap>
+      {show.map((item, index) => {
+        if (index <= 4) {
+          return (
+            <Wrap key={index}>
+              <Link to="/detail">
+                <a>
+                  <img
+                    src={item.thumbnail}
+                    alt="thumbnail"
+                    onClick={() => {
+                      localStorage.setItem("newFile", JSON.stringify(item));
+                    }}
+                  />
+                </a>
+              </Link>
+            </Wrap>
+          );
+        }
+      })}
     </Carousel>
   );
 };
@@ -95,23 +94,18 @@ const Wrap = styled.div`
     display: block;
     position: relative;
     padding: 4px;
+    overflow: hidden;
 
     img {
-      width: 100%;
-      height: 100%;
       overflow: hidden;
+      height: 60vh;
+      width: 100%;
+      object-fit: fill;
     }
 
     &:hover {
       border: 4px solid rgba(249, 249, 249, 0.8);
       transition-duration: 300ms;
-    }
-
-    video{
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0px;
     }
   }
 `;
