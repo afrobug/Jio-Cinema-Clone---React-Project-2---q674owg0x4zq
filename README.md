@@ -2,6 +2,9 @@
 
 Welcome to JioCinema Clone , a comprehensive video streaming service designed to provide users with an immersive and entertaining cinematic experience. Our clone project, inspired by JioCinema, is built with cutting-edge technologies to offer a feature-rich platform for streaming movies, TV shows, web series, and short films.
 
+Test username: test1@gmail.com
+Test username password: 123
+
 Key Features:
 
 Content Galore: Our platform boasts a vast content library, spanning various genres, languages, and regions, ensuring there's something for every taste.
